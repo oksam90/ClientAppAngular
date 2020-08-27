@@ -1,0 +1,34 @@
+<p>liste des Clients!</p>
+<a class="btn btn-success" [routerLink]="['/custumers/add']" routerLinkActive="router-link-active" >Ajouter un client(e)</a>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let custumer of listeCustumer">
+        <td scope="row">{{custumer.id}}</td>
+        <td>{{custumer.firstName}}</td>
+        <td>{{custumer.lastName}}</td>
+        <td>{{custumer.email}}</td>
+        <td>
+            <p data-placement="top" data-toggle="tooltip" title="Edit">
+                <button class="btn btn-prymary btn-xs" 
+                [routerLink]="['/custumers/edit/'] + custumer.id" routerLinkActive="router-link-active" data-title="Edit">
+                <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </p>
+            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                <button class="btn btn-danger btn-xs" (click)="deleteCustumer(custumer.id)" data-title="Delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+</table>
